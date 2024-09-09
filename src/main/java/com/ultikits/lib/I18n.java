@@ -2,7 +2,6 @@ package com.ultikits.lib;
 
 import org.bukkit.entity.Player;
 
-
 public interface I18n {
 
     /**
@@ -53,8 +52,8 @@ public interface I18n {
      * Translates and sends an internationalized message to the specified player.
      * If the player's locale is available, the message will be translated using
      * that locale.
-     * If the player's locale is not available or an exception occurs, the message
-     * will be translated using the default locale.
+     * If the player's locale is not available, the message will be translated
+     * using the default locale.
      *
      * @param player  the player to send the message to
      * @param message the message to be translated and sent
@@ -63,7 +62,7 @@ public interface I18n {
         try {
             String locale = player.getLocale();
             player.sendMessage(i18n(locale, message));
-        } catch (Exception e) {
+        } catch (NoSuchMethodError e) {
             player.sendMessage(i18n(message));
         }
     };
